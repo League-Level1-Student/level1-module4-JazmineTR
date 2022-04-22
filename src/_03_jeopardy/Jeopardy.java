@@ -54,12 +54,15 @@ public class Jeopardy implements ActionListener {
 		frame.setTitle("Jeopardy");
 		// 2. Give your frame a title
 		JPanel mangoes;
+		mangoes = createHeader("Celebrities");
+		quizPanel.add(mangoes);
+		frame.add(quizPanel);
 		// 3. Create a JPanel variable to hold the header using the createHeader method
 		// 4. Add the header component to the quizPanel
 		// 5. Add the quizPanel to the frame
-
+		firstButton = createButton("$200");
+		quizPanel.add(firstButton);
 		// 6. Use the createButton method to set the value of firstButton
-
 		// 7. Add the firstButton to the quizPanel
 
 		// 8. Write the code to complete the createButton() method below. Check that your
@@ -67,11 +70,12 @@ public class Jeopardy implements ActionListener {
 
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-
+		secondButton = createButton("$400");
 		// 10. Add the secondButton to the quizPanel
-
+		quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
-
+		firstButton.addActionListener(this);
+		secondButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
@@ -92,47 +96,60 @@ public class Jeopardy implements ActionListener {
 	private JButton createButton(String dollarAmount) {
 		
 		// Create a new JButton
-
+		JButton temp = new JButton();
+		temp.setText(dollarAmount);
+		buttonCount++;
 		// Set the text of the button to the dollarAmount
 
 		// Increment the buttonCount (this should make the layout vertical)
 
 		// Return your new button instead of the temporary button
 
-		return new JButton("temporary button");
+		return temp;
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		
 		// Remove this temporary message after testing:
-		JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
-
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
 
+		if(buttonPressed == firstButton) {
+			askQuestion("Who is the artist of Baby featuring Ludacris?","Justin Bieber", 200);
+		}
 			// Call the askQuestion() method
  
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 
 		// If the buttonPressed was the secondButton
-
+		if(buttonPressed == secondButton) {
+			askQuestion("Who sings Ride or Stressed Out? ","Twenty One Pilots", 400);
+		}
 			// Call the askQuestion() method with a harder question
 
 		// Clear the text on the button that was pressed (set the button text to nothing)
-
+buttonPressed.setText("");
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
-		
+		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
-		
+		String bieber = JOptionPane.showInputDialog(null, question);
+		stopJeopardyTheme();
 		// Stop the theme music when they have entered their response. 
-		
+			
 		// If the answer is correct
-
+		if(bieber.equalsIgnoreCase(correctAnswer)) {
+			score = score + prizeMoney;
+			JOptionPane.showMessageDialog(null, "Ding Ding Ding! Correct!!");
+		}
+		else {
+			score = score - prizeMoney;
+			JOptionPane.showMessageDialog(null, "Wrong, it was " + correctAnswer);
+		}
+		updateScore();	
 			// Increase the score by the prizeMoney
 
 			// Pop up a message to tell the user they were correct
