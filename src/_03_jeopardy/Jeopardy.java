@@ -35,7 +35,7 @@ import javax.swing.JPanel;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton, fifthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
@@ -73,9 +73,18 @@ public class Jeopardy implements ActionListener {
 		secondButton = createButton("$400");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
+		thirdButton = createButton("$600");
+		quizPanel.add(thirdButton);
+		fourthButton = createButton("$800");
+		quizPanel.add(fourthButton);
+		fifthButton = createButton("$1000");
+		quizPanel.add(fifthButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
+		fifthButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
@@ -120,13 +129,23 @@ public class Jeopardy implements ActionListener {
 			// Call the askQuestion() method
  
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
-
+		
 		// If the buttonPressed was the secondButton
 		if(buttonPressed == secondButton) {
 			askQuestion("Who sings Ride or Stressed Out? ","Twenty One Pilots", 400);
 		}
 			// Call the askQuestion() method with a harder question
+		if(buttonPressed == thirdButton) {
+			askQuestion("What is the name of the female singer who rescheduled her concert date in Minnesota because she had food poisoning?","Katy Perry", 600);
+		}
+		if(buttonPressed == fourthButton) {
+			askQuestion("In which state was the singer Chris Brown born in?","Virginia", 800);
+		}
+		if(buttonPressed == fifthButton) {
+			askQuestion("Who won an Oscar for best Actor/ Actress in the year 2013? ","Jennifer Lawrence", 1000);
+		}
 
+		
 		// Clear the text on the button that was pressed (set the button text to nothing)
 buttonPressed.setText("");
 	}
@@ -134,10 +153,8 @@ buttonPressed.setText("");
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
-		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
-		String bieber = JOptionPane.showInputDialog(null, question);
-		stopJeopardyTheme();
+		String bieber = JOptionPane.showInputDialog(question);
 		// Stop the theme music when they have entered their response. 
 			
 		// If the answer is correct
