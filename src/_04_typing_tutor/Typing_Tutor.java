@@ -1,5 +1,7 @@
 package _04_typing_tutor;
 
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
@@ -7,8 +9,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Typing_Tutor {
-
+public class Typing_Tutor implements KeyListener{
+ public static void main(String[] args) {
+	 Typing_Tutor alexa = new Typing_Tutor();
+	alexa.setup();
+	
+}
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		char currentLetter;
@@ -21,11 +27,43 @@ public class Typing_Tutor {
 			bond.setText(""+currentLetter);
 			bond.setFont(bond.getFont().deriveFont(28.0f));
 			bond.setHorizontalAlignment(JLabel.CENTER);
-			frame.addKeyListener((KeyListener)this);
-			
+			frame.addKeyListener(this);
+			panel.add(bond);
+			frame.add(panel);
+			frame.pack();
 		}
+		
 		char generateRandomLetter() {
 		    Random r = new Random();
 		    return (char) (r.nextInt(26) + 'a');
 		}
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			if(keyPressed == currentLetter) {
+				System.out.println("Correct!");
+				panel.setBackground(Color.green);
+				
+			}
+			else {
+				panel.setBackground(Color.RED);
+			}
+			
+		}
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			JLabel bond = new JLabel();
+			currentLetter = generateRandomLetter();
+			bond.setText(""+currentLetter);
+		}
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+		
+		
+		}
 }
+
+
+
