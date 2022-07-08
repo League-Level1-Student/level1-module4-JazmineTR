@@ -17,17 +17,29 @@ public class Calculator {
 		System.out.println(x*y);
 	}
 	
-	public void setup(){
-		
+	public void run(){
+		// TODO Auto-generated method stub
 		JFrame frame = new JFrame ("Simple Calculator");
 		JTextField field = new JTextField("Integer #1");
-		field.setBounds(50, 100, 50, 30);
+		field.setBounds(50, 100, 100, 80);
 		frame.add(field);
-		frame.setSize(300,300);
+		frame.setLayout(null);
 		frame.setVisible(true);
-		JButton addy = new JButton ("add");
+		frame.setSize(1000,1000);
+		JTextField hockey = new JTextField("Integer #2");
+		hockey.setBounds(300, 100, 100, 80);
+		frame.add(hockey);
+		frame.setLayout(null);
+		frame.setVisible(true);
+		frame.setSize(1000,1000);
+		 frame.getContentPane().add(field);
+		 frame.getContentPane().add(hockey);
+		frame.pack();
+		/* JButton addy = new JButton ("add");
+		addy.setSize(50, 50);
 		frame.add(addy);
-	}
-	
-	
+		frame.pack();
+		*/
+}
+
 }
