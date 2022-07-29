@@ -1,9 +1,11 @@
 package _08_calculator;
 
 import javax.swing.*;
-public class Calculator {
 
-		
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+public class Calculator implements ActionListener {
+	
 	static void add(int x,int y) {
 		System.out.println(x+y);
 	}
@@ -17,29 +19,41 @@ public class Calculator {
 		System.out.println(x*y);
 	}
 	
+
+	
 	public void run(){
 		// TODO Auto-generated method stub
 		JFrame frame = new JFrame ("Simple Calculator");
-		JTextField field = new JTextField("Integer #1");
+		JPanel potato = new JPanel();
+		JTextField field = new JTextField("");
 		field.setBounds(50, 100, 100, 80);
-		frame.add(field);
-		frame.setLayout(null);
-		frame.setVisible(true);
+		potato.add(field);
 		frame.setSize(1000,1000);
-		JTextField hockey = new JTextField("Integer #2");
+		JTextField hockey = new JTextField("");
 		hockey.setBounds(300, 100, 100, 80);
-		frame.add(hockey);
-		frame.setLayout(null);
-		frame.setVisible(true);
+		potato.add(hockey);
+		frame.add(potato);
+		frame.pack();
 		frame.setSize(1000,1000);
 		 frame.getContentPane().add(field);
 		 frame.getContentPane().add(hockey);
 		frame.pack();
-		/* JButton addy = new JButton ("add");
+		JButton addy = new JButton ("add");
 		addy.setSize(50, 50);
-		frame.add(addy);
+		potato.add(addy);
+		frame.setVisible(true);
+		frame.add(potato);
 		frame.pack();
-		*/
+		 addy.addActionListener(this);
+		
+	
 }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	
+	
 }
