@@ -1,6 +1,8 @@
 package _09_tv_show_episode_info;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -8,11 +10,30 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class TVShowEpisodeInfoDisplayer {
+public class TVShowEpisodeInfoDisplayer implements ActionListener {
 	
+	JButton submit = new JButton("Submit");
+	JTextField show = new JTextField(10);
 	public TVShowEpisodeInfoDisplayer() {
+		JFrame mariska = new JFrame("TV Show Info");
+		JPanel cabot = new JPanel();
+		mariska.add(cabot);
+		cabot.add(show);
+		mariska.add(cabot);
+		mariska.pack();
+		submit.setSize(200, 200);
+		cabot.add(submit);
+		mariska.add(cabot);
+		mariska.pack();
+		submit.addActionListener(this);
+		mariska.setVisible(true);
+		
 		
 	}
 
@@ -74,4 +95,19 @@ public class TVShowEpisodeInfoDisplayer {
 		
 		return res;
 	}
+
+
+
+
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	JButton buttonPressed = (JButton) e.getSource();
+	String showepi = show.getText();
+	if(buttonPressed.equals(submit)) {
+		String big = getShowEpisodeData(showepi);
+		JOptionPane.showMessageDialog(null, big);
+	}
+}
 }
