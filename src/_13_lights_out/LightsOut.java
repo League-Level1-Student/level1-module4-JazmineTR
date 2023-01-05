@@ -1,10 +1,12 @@
 package _13_lights_out;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -24,8 +26,14 @@ public class LightsOut implements MouseListener {
 	public LightsOut() {
 
 		/** PART 1. CREATE YOUR LIGHT BOARD **/
-		//1. Make your gamePanel a 5x5 grid with setLayout(new GridLayout(5, 5));
+		//1. Make your gamePanel a 5x5 grid with 
+		gamePanel.setLayout(new GridLayout(5, 5));
+		for (int i = 0; i<25;i++) {
+			JLabel lights = new JLabel();
+			gamePanel.add(lights);
+		}
 		
+		gamePanel.setVisible(true);
 		
 			//2. Add 25 JLabels to your gamePanel (these are your lights)
 
@@ -42,6 +50,16 @@ public class LightsOut implements MouseListener {
 
 		//7. Set the size of the frame
 
+	}
+
+	private Object lights(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private void setLayout(GridLayout gridLayout) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
