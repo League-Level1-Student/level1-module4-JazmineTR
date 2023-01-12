@@ -17,7 +17,7 @@ public class WhackAMole {
 	static void drawButtons(int rand) {
 		for(int i=0;i<rand+1;i++) {
 		JButton num = new JButton();
-		num.setSize
+		num.setSize(100, 100 );
 		biden.add(num);
 		}
 }
@@ -25,7 +25,6 @@ public class WhackAMole {
 		joe.setSize(500,500);
 		drawButtons(13);
 		joe.add(biden);
-		joe.pack();
 		joe.setVisible(true);
 		
 	}
