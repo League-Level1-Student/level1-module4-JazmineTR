@@ -53,10 +53,16 @@ public class PigLatin implements ActionListener {
 		// TODO Auto-generated method stub
 		JButton buttonPressed = (JButton) e.getSource();
 		String jacob = english.getText();
+		String jacquelyn = pig.getText();
 		
 		if(buttonPressed.equals(eng)) {
 			String noob = translateEnglishToPigLatin(jacob);
 			pig.setText(noob);
+		}
+		else if (buttonPressed.equals(latin)) {
+			String nub = translatePigLatinToEnglish(jacquelyn);
+			english.setText(nub);
+		}
 		}
 
     public static String translateEnglishToPigLatin(String s) {
