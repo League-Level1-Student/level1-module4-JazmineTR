@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,7 +21,9 @@ import javax.swing.JPanel;
  * 
  */
 public class LightsOut implements MouseListener {
-
+	
+	
+	JFrame cam = new JFrame("Lights Out");
 	JPanel gamePanel = new JPanel();
 
 	public LightsOut() {
@@ -30,7 +33,15 @@ public class LightsOut implements MouseListener {
 		gamePanel.setLayout(new GridLayout(5, 5));
 		for (int i = 0; i<25;i++) {
 			JLabel lights = new JLabel();
+			String numb = String.valueOf(i);
+			lights.setText(numb);
+			lights.setBackground(Color.LIGHT_GRAY);
+			lights.setOpaque(true);
+			lights.addMouseListener(this);
 			gamePanel.add(lights);
+			cam.add(gamePanel);
+			cam.setSize(500, 500);
+			cam.setVisible(true);
 		}
 		
 		gamePanel.setVisible(true);
@@ -52,25 +63,28 @@ public class LightsOut implements MouseListener {
 
 	}
 
-	private Object lights(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private void setLayout(GridLayout gridLayout) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		/** PART 2: TOGGLE NEIGHBORING LIGHTS **/
 		// 1. Get the light that was clicked on `(JLabel) e.getSource`
-
+		JLabel neLight = (JLabel) e.getSource();
 		// 2. Get the number (position) of the light
-
+		String pos = neLight.getText();
+		int post = Integer.parseInt(pos);
+		
+		makeMove(post);
 		// 3. Now use the makeMove method to code which lights turn on and off.
-
+		for(int i = 0;i<25;i++) {
+		JLabel newby = getLightAtPosition(i);
+		int count = 0;
+		if(newby.getBackground() == Color.LIGHT_GRAY) {
+		count++;
+		}
+		if(count == 25)	{
+			JOptionPane.showMessageDialog(null, "You won");
+		}
+			
+		}
 		// 4.Check if the player has won (e.g. all the lights are off)
 		// ---- HINT: use `getLightAtPosition` to get the light at each position
 		// ---------- use 'getBackground' to get the light color
